@@ -1,0 +1,33 @@
+<h1>Listing peladas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Data</th>
+      <th>Local</th>
+      <th>Minimo pessoas</th>
+      <th>Custo</th>
+      <th>Responsavel</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @peladas.each do |pelada| %>
+      <tr>
+        <td><%= pelada.data %></td>
+        <td><%= pelada.local %></td>
+        <td><%= pelada.minimo_pessoas %></td>
+        <td><%= pelada.custo %></td>
+        <td><%= pelada.responsavel %></td>
+        <td><%= link_to 'Show', pelada %></td>
+        <td><%= link_to 'Edit', edit_pelada_path(pelada) %></td>
+        <td><%= link_to 'Destroy', pelada, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pelada', new_pelada_path %>

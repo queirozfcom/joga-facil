@@ -11,12 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140419135414) do
+ActiveRecord::Schema.define(version: 20140419161429) do
 
   create_table "peladas", force: true do |t|
     t.datetime "data"
     t.string   "local"
     t.integer  "minimo_pessoas"
+    t.float    "custo"
+    t.string   "responsavel"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
