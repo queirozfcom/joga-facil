@@ -1,5 +1,5 @@
 class PeladasController < ApplicationController
-  before_action :set_pelada, only: [:show, :edit, :update, :destroy]
+  before_action :set_pelada, only: [:show, :edit, :update, :destroy,:join]
 
   # GET /peladas
   # GET /peladas.json
@@ -35,6 +35,26 @@ class PeladasController < ApplicationController
         format.json { render json: @pelada.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def join
+    @usuario = Usuario.new
+
+    respond_to do |format|
+      
+      usuario = Usuario.find(usuario_params)
+
+      if usuario.nil?
+        usuario = @usuario
+        usuario.save!
+      end
+
+      cross_model = PeladasUsuarios.new(:usuario_id=>usuario.id,:pelada_id => @pelada.id)
+      cross_model.save!
+
+    end
+
+
   end
 
   # PATCH/PUT /peladas/1

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140419161429) do
+ActiveRecord::Schema.define(version: 20140419174437) do
 
   create_table "peladas", force: true do |t|
     t.datetime "data"
@@ -19,6 +19,23 @@ ActiveRecord::Schema.define(version: 20140419161429) do
     t.integer  "minimo_pessoas"
     t.float    "custo"
     t.string   "responsavel"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "peladas_usuarios", force: true do |t|
+    t.integer  "pelada_id"
+    t.integer  "usuario_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "peladas_usuarios", ["pelada_id"], name: "index_peladas_usuarios_on_pelada_id"
+  add_index "peladas_usuarios", ["usuario_id"], name: "index_peladas_usuarios_on_usuario_id"
+
+  create_table "usuarios", force: true do |t|
+    t.string   "nome"
+    t.string   "email"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

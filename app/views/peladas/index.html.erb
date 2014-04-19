@@ -20,9 +20,9 @@
         <td><%= pelada.minimo_pessoas %></td>
         <td><%= pelada.custo %></td>
         <td><%= pelada.responsavel %></td>
-        <td><%= link_to 'Show', pelada %></td>
-        <td><%= link_to 'Edit', edit_pelada_path(pelada) %></td>
-        <td><%= link_to 'Destroy', pelada, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Visualizar', pelada %></td>
+        <td><%= link_to 'Editar', edit_pelada_path(pelada) %></td>
+        <td><%= link_to 'Remover', pelada, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +30,4 @@
 
 <br>
 
-<%= link_to 'New Pelada', new_pelada_path %>
+<%= link_to 'Nova Pelada', new_pelada_path %>
