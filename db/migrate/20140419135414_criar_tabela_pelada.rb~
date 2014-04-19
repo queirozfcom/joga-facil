@@ -1,0 +1,10 @@
+class CriarTabelaPelada < ActiveRecord::Migration
+  def change
+    create_table :peladas do |t| 
+      t.primary_key :id
+      t.datetime :data
+      t.string :local
+      t.integer :minimo_pessoas
+    end
+ end
+end
