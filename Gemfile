@@ -33,10 +33,10 @@ end
 
 group :development,:test do
   gem 'rspec-rails', '~> 3.0.0.beta'
-  gem 'sqlite3'
+  gem 'rake'
 end
 
-group :production do
+group :production,:test do
   gem 'pg'
 end
 

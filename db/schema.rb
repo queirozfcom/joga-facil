@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20140419174437) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "peladas", force: true do |t|
     t.datetime "data"
     t.string   "local"
@@ -30,8 +33,8 @@ ActiveRecord::Schema.define(version: 20140419174437) do
     t.datetime "updated_at"
   end
 
-  add_index "peladas_usuarios", ["pelada_id"], name: "index_peladas_usuarios_on_pelada_id"
-  add_index "peladas_usuarios", ["usuario_id"], name: "index_peladas_usuarios_on_usuario_id"
+  add_index "peladas_usuarios", ["pelada_id"], name: "index_peladas_usuarios_on_pelada_id", using: :btree
+  add_index "peladas_usuarios", ["usuario_id"], name: "index_peladas_usuarios_on_usuario_id", using: :btree
 
   create_table "usuarios", force: true do |t|
     t.string   "nome"
