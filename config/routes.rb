@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
   resources :usuarios
 
-  resources :peladas
+  resources :peladas do
+    member do
+      get 'join'
+      post 'join'
+    end
+  end
 
-  get 'peladas/:id/join' => 'peladas#join' , :as => :join_pelada
+  # get 'peladas/:id/join' => 'peladas#join' , :as => :join_pelada
+  # post 'peladas/:id/join' => 'peladas#join' , :as => :join_pelada
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

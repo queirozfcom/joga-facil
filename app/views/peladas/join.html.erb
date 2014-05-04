@@ -1,6 +1,6 @@
 <h1>Join pelada in <%= @pelada.local %> at <%= @pelada.data%> </h1>
 
-<%= form_for(@usuario) do |f| %>
+<%= form_for(@usuario,:url => { :controller=> 'peladas', :action => 'join'} ) do |f| %>
   <% if @usuario.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@usuario.errors.count, "error") %> prohibited this usuario from being saved:</h2>

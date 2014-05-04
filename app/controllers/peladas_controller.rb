@@ -1,5 +1,5 @@
 class PeladasController < ApplicationController
-  before_action :set_pelada, only: [:show, :edit, :update, :destroy,:join]
+  before_action :set_pelada, only: [:show, :edit, :update, :destroy, :join]
 
   # GET /peladas
   # GET /peladas.json
@@ -40,18 +40,25 @@ class PeladasController < ApplicationController
   def join
     @usuario = Usuario.new
 
-    respond_to do |format|
-      
-      usuario = Usuario.find(usuario_params)
+    if request.get?
+      # just render
+    elsif request.post?
 
-      if usuario.nil?
-        usuario = @usuario
-        usuario.save!
+      respond_to do |format|
+        usuario_params = params['usuario']
+
+        usuario = Usuario.where(:email => usuario_params['email']).take
+
+        if usuario.nil?
+          usuario = @usuario
+          usuario.save!
+        end
+
+        cross_model = PeladasUsuarios.new(:usuario_id => usuario.id, :pelada_id => @pelada.id)
+        cross_model.save!
+
+        format.html { redirect_to @pelada, :notice => 'User successfully joined this Pelada.' }
       end
-
-      cross_model = PeladasUsuarios.new(:usuario_id=>usuario.id,:pelada_id => @pelada.id)
-      cross_model.save!
-
     end
 
 
@@ -82,13 +89,13 @@ class PeladasController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_pelada
-      @pelada = Pelada.find(params[:id])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_pelada
+    @pelada = Pelada.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def pelada_params
-      params.require(:pelada).permit(:data, :local, :minimo_pessoas, :custo, :responsavel)
-    end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def pelada_params
+    params.require(:pelada).permit(:data, :local, :minimo_pessoas, :custo, :responsavel)
+  end
 end
