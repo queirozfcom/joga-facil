@@ -4,7 +4,8 @@ class PeladasController < ApplicationController
   # GET /peladas
   # GET /peladas.json
   def index
-    @peladas = Pelada.all
+    # @peladas = Pelada.all
+    @peladas_grid = initialize_grid(Pelada)
   end
 
   # GET /peladas/1

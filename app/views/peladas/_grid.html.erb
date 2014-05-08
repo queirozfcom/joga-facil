@@ -1,0 +1,33 @@
+<%= grid(@peladas_grid) do |g|
+
+  g.column do |p|
+    p.data
+  end
+
+  g.column  do |p|
+    p.local
+  end
+
+  g.column do |p|
+    p.minimo_pessoas
+  end
+
+  g.column do |p|
+    p.custo
+  end
+
+  g.column do |p|
+    p.responsavel
+  end
+
+  g.column do |p|
+    p.created_at.to_s(:short)
+  end
+  g.column do |p|
+    p.updated_at.to_s(:short)
+  end
+
+  g.column do |p|
+    link_to('Edit', edit_pelada_path(p))
+  end
+end -%>
