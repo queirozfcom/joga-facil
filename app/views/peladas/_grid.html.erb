@@ -1,33 +1,39 @@
 <%= grid(@peladas_grid) do |g|
 
-  g.column do |p|
+  g.column name: 'Data' do |p|
     p.data
   end
 
-  g.column  do |p|
+  g.column name: 'Local' do |p|
     p.local
   end
 
-  g.column do |p|
+  g.column name:'Mínimo pessoas' do |p|
     p.minimo_pessoas
   end
 
-  g.column do |p|
+  g.column name: 'Custo' do |p|
     p.custo
   end
 
-  g.column do |p|
+  g.column name: 'Responsável' do |p|
     p.responsavel
   end
 
-  g.column do |p|
-    p.created_at.to_s(:short)
+  g.column name: 'Participantes' do |p|
+    p.usuario.count
   end
+
+
   g.column do |p|
-    p.updated_at.to_s(:short)
+    link_to( 'Visualizar', pelada_path(p))
   end
 
   g.column do |p|
-    link_to('Edit', edit_pelada_path(p))
+    link_to( 'Entrar', join_pelada_path(p))
+  end
+
+  g.column do |p|
+    link_to('Editar', edit_pelada_path(p))
   end
 end -%>
