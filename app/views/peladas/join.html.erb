@@ -1,4 +1,4 @@
-<h1>Join pelada in <%= @pelada.local %> at <%= @pelada.data%> </h1>
+<h2>Jogar pelada em <%= @pelada.local %> no dia <%= @pelada.data.strftime("%d/%m/%Y às %H:%M") %> </h2>
 
 <%= form_for(@usuario,:url => { :controller=> 'peladas', :action => 'join'} ) do |f| %>
   <% if @usuario.errors.any? %>
@@ -22,11 +22,11 @@
     <%= f.text_field :email %>
   </div>
   <div class="actions">
-    <%= f.submit 'Join this Pelada'%>
+    <%= f.submit 'Jogar essa Pelada', {'class' => 'btn btn-primary'} %>
   </div>
 <% end %>
 
 
-<%= link_to 'Show', @pelada %> |
+<%= link_to 'Mostrar', @pelada %> |
 
-<%= link_to 'Back', peladas_path %>
+<%= link_to 'Voltar', peladas_path %>
