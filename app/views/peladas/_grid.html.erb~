@@ -12,10 +12,6 @@
     p.minimo_pessoas
   end
 
-  g.column name:'Máximo pessoas' do |p|
-    p.maximo_pessoas
-  end
-
   g.column name: 'Custo' do |p|
     p.custo
   end
@@ -30,7 +26,7 @@
 
 
   g.column do |p|
-    link_to( 'Visualizar', pelada_path(p))
+    link_to( 'Visualizar teste', pelada_path(p))
   end
 
   g.column do |p|

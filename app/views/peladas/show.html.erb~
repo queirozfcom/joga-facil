@@ -15,10 +15,6 @@
   <%= @pelada.minimo_pessoas %>
 </p>
 
-<p>Máximo pessoas:</strong>
-  <%= @pelada.maximo_pessoas %>
-</p>
-
 <p>
   <strong>Custo:</strong>
   <%= @pelada.custo %>
@@ -29,10 +25,14 @@
   <%= @pelada.responsavel %>
 </p>
 
+<<<<<<< HEAD
+<%= link_to 'Edit', edit_pelada_path(@pelada) %> |
+<%= link_to 'Join', join_pelada_path(@pelada) %> |
+<%= link_to 'Back', peladas_path %>
 
+<%= render partial: 'grid_participantes' %>
+=======
 <%= link_to 'Editar', edit_pelada_path(@pelada) %> |
 <%= link_to 'Jogar', join_pelada_path(@pelada) %> |
 <%= link_to 'Voltar', peladas_path %>
-
-<%= render partial: 'grid_participantes' %>
-
+>>>>>>> Ajustando formato da data
