@@ -34,7 +34,12 @@
   end
 
   g.column do |p|
-    link_to( 'Entrar', join_pelada_path(p))
+
+    if p.maximo_pessoas.nil? ||  p.usuario.count < p.maximo_pessoas
+        link_to( 'Entrar', join_pelada_path(p))
+    else
+       "Lotou"
+    end
   end
 
   g.column do |p|
