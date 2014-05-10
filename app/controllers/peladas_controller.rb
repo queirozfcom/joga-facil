@@ -13,11 +13,6 @@ class PeladasController < ApplicationController
      :order => 'peladas.maximo_pessoas',
      :order => 'peladas.responsavel',
      :order => 'peladas.custo',
-     :order => 'peladas.usuario',
-     :custom_order => {
-       'peladas.usuario.' => 'count( ? )'
-     },
-
      :order_direction => 'asc')
   end
 
