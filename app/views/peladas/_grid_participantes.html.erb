@@ -7,11 +7,5 @@
     usuario.email
   end
 
-  g.column do |usuario|
-    link_to( 'Visualizar', usuario_path(usuario))
-  end
 
-  g.column do |usuario|
-    link_to('Editar', edit_usuario_path(usuario))
-  end
 end -%>

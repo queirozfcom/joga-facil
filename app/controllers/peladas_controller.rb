@@ -19,7 +19,7 @@ class PeladasController < ApplicationController
   # GET /peladas/1
   # GET /peladas/1.json
   def show
-    @usuarios_grid = initialize_grid(Usuario)
+    @usuarios_grid = initialize_grid(Usuario.where(peladas: {'id' => @pelada}).joins(:pelada))
   end
 
   # GET /peladas/new
