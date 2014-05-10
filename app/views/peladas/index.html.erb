@@ -24,14 +24,12 @@
 
     <div class="row">
       <div class="col-xs-12">
-        <%= button_tag('Filtrar', {'class' => ' btn btn-primary wg-external-submit-button', 'data-grid-name' => 'grid'}) %>
+        <%= button_tag('Buscar', {'class' => ' btn btn-primary wg-external-submit-button', 'data-grid-name' => 'grid'}) %>
         <%= button_tag('Limpar', {'class' => ' btn btn-default wg-external-reset-button', 'data-grid-name' => 'grid'}) %>
       </div>
     </div>
 
   </div>
-
-
 
   <%= render_grid(@peladas_grid) %>
 
