@@ -1,26 +1,26 @@
 <%= grid(@peladas_grid) do |g|
 
-  g.column name: 'Data' do |p|
+  g.column name: 'Data', attribute: 'data', filter: false do |p|
     p.data.strftime("%d/%m/%Y às %H:%M")
   end
 
-  g.column name: 'Local' do |p|
+  g.column name: 'Local', attribute: 'local', filter: false do |p|
     p.local
   end
 
-  g.column name:'Mínimo pessoas' do |p|
+  g.column name:'Mínimo pessoas', attribute: 'minimo_pessoas', filter: false do |p|
     p.minimo_pessoas
   end
 
-  g.column name:'Máximo pessoas' do |p|
+  g.column name:'Máximo pessoas', attribute: 'maximo_pessoas', filter: false do |p|
     p.maximo_pessoas
   end
 
-  g.column name: 'Custo' do |p|
+  g.column name: 'Custo',attribute: 'custo', filter: false do |p|
     p.custo
   end
 
-  g.column name: 'Responsável' do |p|
+  g.column name: 'Responsável', attribute: 'responsavel', filter: false do |p|
     p.responsavel
   end
 

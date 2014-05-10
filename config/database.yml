@@ -11,7 +11,7 @@ default: &default
   pool: 5
   timeout: 5000
   encoding: unicode
-  user: postgres
+  user: thiago
 
 development:
   adapter: postgresql
@@ -20,7 +20,7 @@ development:
   pool: 5
   timeout: 5000
   encoding: unicode
-  user: postgres
+  user: thiago
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -32,7 +32,7 @@ test:
   pool: 5
   timeout: 5000
   encoding: unicode
-  user: postgres
+  user: thiago
 
 production:
   adapter: postgresql
@@ -41,4 +41,4 @@ production:
   pool: 5
   timeout: 5000
   encoding: unicode
-  user: postgres
+  user: thiago
