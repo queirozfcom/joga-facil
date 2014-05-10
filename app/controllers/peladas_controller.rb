@@ -5,13 +5,19 @@ class PeladasController < ApplicationController
   # GET /peladas.json
   def index
     # @peladas = Pelada.all
-    @peladas_grid =initialize_grid(Pelada,   
+    @peladas_grid =initialize_grid(Pelada, 
+     :include => [:usuario],  
      :order => 'peladas.local',
      :order => 'peladas.minimo_pessoas',
      :order => 'peladas.data',
      :order => 'peladas.maximo_pessoas',
      :order => 'peladas.responsavel',
      :order => 'peladas.custo',
+     :order => 'peladas.usuario',
+     :custom_order => {
+       'peladas.usuario.' => 'count( ? )'
+     },
+
      :order_direction => 'asc')
   end
 

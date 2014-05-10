@@ -24,8 +24,9 @@
     p.responsavel
   end
 
-  g.column name: 'Participantes' do |p|
+  g.column name: 'Participantes', attribute: 'nome', model: 'Usuario',  filter: false   do |p|
     p.usuario.count
+    #p.usuario.collect{|user| user.nome}.to_sentence if p.usuario
   end
 
 
