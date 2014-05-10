@@ -3,6 +3,19 @@
 
   <%= render partial: 'grid' %>
 
+  <div class="well">
+    <div class="row-fluid">
+      <div class="span2">
+        Local:
+      </div>
+      <div class="span10">
+        <%= grid_filter @peladas_grid, :local_filter %>
+      </div>
+    </div>
+  </div>
+
+  <%= render_grid(@peladas_grid) %>
+
   <%= link_to 'Nova Pelada', new_pelada_path, class: 'btn btn-default' %>
 
 </div>
