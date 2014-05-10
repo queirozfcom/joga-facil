@@ -2,5 +2,11 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @pelada %> |
-<%= link_to 'Back', peladas_path %>
+<%= link_to 'Mostrar', @pelada %> |
+<%= link_to 'Voltar', peladas_path %>
+
+<script>
+	$(document).ready(function(){
+	  $('.money input').mask('#0.00', {reverse: true, maxlength: false});
+	});
+</script>
