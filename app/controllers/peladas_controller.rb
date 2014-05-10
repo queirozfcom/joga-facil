@@ -36,18 +36,13 @@ class PeladasController < ApplicationController
   def create
     @pelada = Pelada.new(pelada_params)
 
-    respond_to do |format|
-      if pelada_params['minimo_pessoas'] > pelada_params['maximo_pessoas']
-        format.html { redirect_to @pelada, notice: 'Mínimo de pessoas tem que ser menor que o máximo' }
-        format.json { render json: @pelada.errors, status: :unprocessable_entity }
+  respond_to do |format|
+      if @pelada.save
+        format.html { redirect_to @pelada, notice: 'Pelada salva com sucesso.' }
+        format.json { render :show, status: :created, location: @pelada }
       else
-        if @pelada.save
-          format.html { redirect_to @pelada, notice: 'Pelada salva com sucesso.' }
-          format.json { render :show, status: :created, location: @pelada }
-        else
-          format.html { render :new }
-          format.json { render json: @pelada.errors, status: :unprocessable_entity }
-        end
+        format.html { render :new }
+        format.json { render json: @pelada.errors, status: :unprocessable_entity }
       end
     end
   end
