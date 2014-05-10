@@ -252,7 +252,7 @@ pt:
     # Title of the icon clicking on which will show the calendar to set the FROM date.
     date_selector_tooltip_from: De
     # Title of the icon clicking on which will show the calendar to set the TO date.
-    date_selector_tooltip_to: a
+    date_selector_tooltip_to: até
     # The title of the checkox to turn on negation
     negation_checkbox_title: Excluir
     # link to switch to show all records
@@ -269,7 +269,7 @@ pt:
     date_string_tooltip: Cliquar para apagar
     saved_query_panel_title: Queries gravadas
     save_query_button_label: Gravar o estado dos filtros
-    saved_query_deletion_confirmation: Tem a certeza?
+    saved_query_deletion_confirmation: Tem certeza?
     saved_query_deletion_link_title: Apagar a query
     saved_query_link_title: Caregar a query
     validates_uniqueness_error: Já existe uma query com o mesmo nome
@@ -279,7 +279,7 @@ pt:
     select_all: Selecionar todos
     deselect_all: Remover seleção
 
-pt-BR:
+pt_BR:
   date:
     order:
       - :year

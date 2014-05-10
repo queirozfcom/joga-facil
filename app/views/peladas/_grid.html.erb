@@ -39,7 +39,7 @@
     if p.maximo_pessoas.nil? ||  p.usuario.count < p.maximo_pessoas
         link_to( 'Jogar', join_pelada_path(p))
     else
-       "Lotou"
+       raw("<span style='color:red;'>Lotou</span>")
     end
   end
 
