@@ -48,12 +48,15 @@ class PeladasController < ApplicationController
   end
 
   def join
-    usuario_params = params['usuario']
-    @usuario = Usuario.new(usuario_params)
+
+    @usuario = Usuario.new()
 
     if request.get?
       # just render
     elsif request.post?
+
+
+      @usuario = Usuario.new(usuario_params)
 
       respond_to do |format|
         usuario = Usuario.where(:email => usuario_params['email']).take
@@ -107,4 +110,9 @@ class PeladasController < ApplicationController
   def pelada_params
     params.require(:pelada).permit(:data, :local, :minimo_pessoas, :custo, :responsavel,:maximo_pessoas)
   end
+
+  def usuario_params
+    params.require(:usuario).permit(:nome,:email)
+  end
+
 end
