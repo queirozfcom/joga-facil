@@ -17,7 +17,7 @@
   end
 
   g.column name: 'Custo',attribute: 'custo', filter: false do |p|
-    p.custo
+    number_to_currency(p.custo)
   end
 
   g.column name: 'Responsável', attribute: 'responsavel', filter: false do |p|
@@ -36,7 +36,7 @@
   g.column do |p|
 
     if p.maximo_pessoas.nil? ||  p.usuario.count < p.maximo_pessoas
-        link_to( 'Entrar', join_pelada_path(p))
+        link_to( 'Jogar', join_pelada_path(p))
     else
        "Lotou"
     end
