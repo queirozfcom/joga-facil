@@ -1,42 +1,47 @@
+<div class="jumbotron">
+  <div class="container">
+
+    <h1>Joga fácil</h1>
+    <p>Aplicativo para marcar peladas com seus amigos</p>
+  </div>
+</div>
 <div class="container">
-  <h1>Joga fácil</h1>
+    <%= render partial: 'grid' %>
 
-  <%= render partial: 'grid' %>
+    <div class="well">
+      <div id="local" class="row">
+        <div class="col-xs-2">
+          Local:
+        </div>
+        <div class="col-xs-10">
+          <%= grid_filter @peladas_grid, :local_filter %>
+        </div>
+      </div>
 
-  <div class="well">
-    <div id="local" class="row">
-      <div class="col-xs-2">
-        Local:
+      <div id="data" class="row">
+        <div class="col-xs-2">
+          Data:
+        </div>
+        <div class="col-xs-10">
+          <%= grid_filter @peladas_grid, :data_filter %>
+        </div>
       </div>
-      <div class="col-xs-10">
-        <%= grid_filter @peladas_grid, :local_filter %>
+
+      <div class="row">
+        <div class="col-xs-12">          
+          <%= button_tag('Buscar', {'class' => ' btn btn-primary wg-external-submit-button', 'data-grid-name' => 'grid'}) %>
+          <%= button_tag('Limpar', {'class' => ' btn btn-default wg-external-reset-button', 'data-grid-name' => 'grid'}) %>
+        </div>
       </div>
+
     </div>
+    <%= link_to 'Nova Pelada', new_pelada_path, class: 'btn btn-default' %>
+    <br /><br />
+    <%= render_grid(@peladas_grid) %>
 
-    <div id="data" class="row">
-      <div class="col-xs-2">
-        Data:
-      </div>
-      <div class="col-xs-10">
-        <%= grid_filter @peladas_grid, :data_filter %>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-xs-12">
-        <%= button_tag('Buscar', {'class' => ' btn btn-primary wg-external-submit-button', 'data-grid-name' => 'grid'}) %>
-        <%= button_tag('Limpar', {'class' => ' btn btn-default wg-external-reset-button', 'data-grid-name' => 'grid'}) %>
-      </div>
-    </div>
+    <%= link_to 'Nova Pelada', new_pelada_path, class: 'btn btn-default' %>
 
   </div>
-
-  <%= render_grid(@peladas_grid) %>
-
-  <%= link_to 'Nova Pelada', new_pelada_path, class: 'btn btn-default' %>
-
 </div>
-
-<br>
-
+<br />
 
