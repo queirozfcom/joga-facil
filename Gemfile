@@ -35,10 +35,8 @@ group :development,:test do
   gem 'rake'
 end
 
-group :production,:test do
-  gem 'pg'
-  gem 'rails_12factor'
-end
+gem 'pg'
+ gem 'rails_12factor'
 
 gem 'wice_grid','~> 3.4.3'
 gem 'sass-rails', '~> 4.0.3'

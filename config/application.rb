@@ -22,5 +22,6 @@ module JogaFacil
     config.i18n.available_locales = [:en, :"pt_BR"]
     config.i18n.locale = [:"pt_BR"]
     config.i18n.default_locale = :"pt_BR"
+
   end
 end
