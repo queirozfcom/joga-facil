@@ -11,6 +11,7 @@ class PeladasController < ApplicationController
   # GET /peladas/1
   # GET /peladas/1.json
   def show
+    @usuarios_grid = initialize_grid(Usuario)
   end
 
   # GET /peladas/new
@@ -39,15 +40,14 @@ class PeladasController < ApplicationController
   end
 
   def join
-    @usuario = Usuario.new
+    usuario_params = params['usuario']
+    @usuario = Usuario.new(usuario_params)
 
     if request.get?
       # just render
     elsif request.post?
 
       respond_to do |format|
-        usuario_params = params['usuario']
-
         usuario = Usuario.where(:email => usuario_params['email']).take
 
         if usuario.nil?

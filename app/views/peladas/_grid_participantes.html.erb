@@ -1,0 +1,17 @@
+<%= grid(@usuarios_grid) do |g|
+  g.column name: 'Nome' do |usuario|
+    usuario.nome
+  end
+
+  g.column name: 'Email' do |usuario|
+    usuario.email
+  end
+
+  g.column do |usuario|
+    link_to( 'Visualizar', usuario_path(usuario))
+  end
+
+  g.column do |usuario|
+    link_to('Editar', edit_usuario_path(usuario))
+  end
+end -%>
