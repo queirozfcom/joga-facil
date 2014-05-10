@@ -37,25 +37,27 @@ class PeladasController < ApplicationController
     @pelada = Pelada.new(pelada_params)
 
     respond_to do |format|
-      if @pelada.save
-        format.html { redirect_to @pelada, notice: 'Pelada was successfully created.' }
-        format.json { render :show, status: :created, location: @pelada }
-      else
-        format.html { render :new }
+      if pelada_params['minimo_pessoas'] > pelada_params['maximo_pessoas']
+        format.html { redirect_to @pelada, notice: 'Mínimo de pessoas tem que ser menor que o máximo' }
         format.json { render json: @pelada.errors, status: :unprocessable_entity }
+      else
+        if @pelada.save
+          format.html { redirect_to @pelada, notice: 'Pelada salva com sucesso.' }
+          format.json { render :show, status: :created, location: @pelada }
+        else
+          format.html { render :new }
+          format.json { render json: @pelada.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
 
   def join
-
     @usuario = Usuario.new()
 
     if request.get?
       # just render
     elsif request.post?
-
-
       @usuario = Usuario.new(usuario_params)
 
       respond_to do |format|
@@ -69,11 +71,9 @@ class PeladasController < ApplicationController
         cross_model = PeladasUsuarios.new(:usuario_id => usuario.id, :pelada_id => @pelada.id)
         cross_model.save!
 
-        format.html { redirect_to @pelada, :notice => 'User successfully joined this Pelada.' }
+        format.html { redirect_to @pelada, :notice => 'Usuário adicionado a pelada com sucesso.' }
       end
     end
-
-
   end
 
   # PATCH/PUT /peladas/1
@@ -81,7 +81,7 @@ class PeladasController < ApplicationController
   def update
     respond_to do |format|
       if @pelada.update(pelada_params)
-        format.html { redirect_to @pelada, notice: 'Pelada was successfully updated.' }
+        format.html { redirect_to @pelada, notice: 'Pelada atualizada com sucesso.' }
         format.json { render :show, status: :ok, location: @pelada }
       else
         format.html { render :edit }
