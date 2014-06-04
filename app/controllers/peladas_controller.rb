@@ -38,6 +38,9 @@ class PeladasController < ApplicationController
 
   respond_to do |format|
       if @pelada.save
+
+        PeladaMailer.pelada_notification(@pelada).deliver
+
         format.html { redirect_to @pelada, notice: 'Pelada salva com sucesso.' }
         format.json { render :show, status: :created, location: @pelada }
       else

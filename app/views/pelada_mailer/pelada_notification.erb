@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+</head>
+<body>
+<h1>Olá, <%= @username %>!</h1>
+
+<p>
+  A sua Pelada foi confirmada e acontecerá dentro de duas horas:
+</p>
+
+<ul>
+  <li>Responsável: <%= @pelada.responsavel %> </li>
+  <li>Local: <%= @pelada.local %> </li>
+  <li>Número de Jogadores: <%= '99' %> </li>
+  <li>Preço: <%= @pelada.custo %> </li>
+  <li>Data:<%= @pelada.data %> </li>
+
+</ul>
+
+
+<p>Obrigado por usar o Joga Fácil!</p>
+</body>
+</html>
