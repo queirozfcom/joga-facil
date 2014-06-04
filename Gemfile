@@ -36,8 +36,8 @@ group :development,:test do
 end
 
 gem 'pg'
- gem 'rails_12factor'
-
+gem 'rails_12factor'
+gem 'sendgrid'
 gem 'wice_grid','~> 3.4.3'
 gem 'sass-rails', '~> 4.0.3'
 gem 'bootstrap-sass', '~> 3.1.1'
