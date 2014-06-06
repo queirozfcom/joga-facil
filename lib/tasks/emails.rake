@@ -9,10 +9,8 @@ namespace :emails do
     time_from = (Time.now + 2.hours).beginning_of_minute
     time_to = (Time.now + 2.hours + 10.minutes).beginning_of_minute + 59.seconds
 
-    # need to account for timezones otherwise it doesnt work
-    offset = Time.now.utc_offset
 
-    Pelada.where(data: time_from+offset  .. time_to+offset ).each do |pelada|
+    Pelada.where(data: time_from .. time_to ).each do |pelada|
       PeladaMailer.pelada_notification(pelada)
     end
 
