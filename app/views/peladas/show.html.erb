@@ -2,49 +2,67 @@
 
 <div class="container">
 
-  <div class="row">
+  <div class="col-md-12">
 
 
-    <div class="col-md-6">
+    <div class="panel panel-default">
 
-      <p>
-        <strong>Data:</strong>
-        <%= @pelada.data.strftime("%d/%m/%Y às %H:%M") %>
-      </p>
+      <div class="panel-heading">
+        <h2><%= @pelada.local %> dia <%= @pelada.data.strftime("%d") %> de <%= l(@pelada.data, :format => '%B') %> </h2>
+      </div>
 
-      <p>
-        <strong>Local:</strong>
-        <%= @pelada.local %>
-      </p>
+      <div class="panel-body">
 
-      <p>
-        <strong>Minimo pessoas:</strong>
-        <%= @pelada.minimo_pessoas %>
-      </p>
+        <div class="row">
 
-      <p>Máximo pessoas:</strong>
-        <%= @pelada.maximo_pessoas %>
-      </p>
+          <div class="col-md-4">
 
-      <p>
-        <strong>Custo:</strong>
-        <%= number_to_currency(@pelada.custo) %>
-      </p>
+            <p>
+              <strong>Data:</strong>
+              <%= @pelada.data.strftime("%d/%m/%Y às %H:%M") %>
+            </p>
 
-      <p>
-        <strong>Responsavel:</strong>
-        <%= @pelada.responsavel %>
-      </p>
+            <p>
+              <strong>Local:</strong>
+              <%= @pelada.local %>
+            </p>
 
-      <%= link_to 'Editar', edit_pelada_path(@pelada) %> |
-      <%= link_to 'Jogar', join_pelada_path(@pelada) %> |
-      <%= link_to 'Voltar', peladas_path %>
+            <p>
+              <strong>Minimo pessoas:</strong>
+              <%= @pelada.minimo_pessoas %>
+            </p>
+
+            <p><strong> Máximo pessoas:</strong>
+              <%= @pelada.maximo_pessoas %>
+            </p>
+
+            <p>
+              <strong>Custo:</strong>
+              <%= number_to_currency(@pelada.custo) %>
+            </p>
+
+            <p>
+              <strong>Responsavel:</strong>
+              <%= @pelada.responsavel %>
+            </p>
+
+          </div>
+
+          <div class="col-md-8">
+
+            <%= render partial: 'grid_participantes' %>
+          </div>
+
+        </div>
+
+      </div>
+
+
     </div>
 
-    <div class="col-md-offset-6">
-
-      <%= render partial: 'grid_participantes' %>
-    </div>
+    <%= link_to 'Editar', edit_pelada_path(@pelada) %> |
+    <%= link_to 'Jogar', join_pelada_path(@pelada) %> |
+    <%= link_to 'Voltar', peladas_path %>
 
   </div>
 
