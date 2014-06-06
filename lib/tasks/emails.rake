@@ -7,11 +7,11 @@ namespace :emails do
     # need to find out a way so set this up so that
     # one pelada does not get selected twice
     time_from = (Time.now + 2.hours).beginning_of_minute
-    time_to = (Time.now + 2.hours + 10.minutes).beginning_of_minute + 59.seconds
+    time_to = (Time.now + 2.hours + 9.minutes).beginning_of_minute + 59.seconds
 
     # setting this manually because some servers are in different places
     # -10800 equals UTC -3
-    zone_offset = -10800
+    zone_offset = 0
 
     Pelada.where(data: time_from + zone_offset .. time_to + zone_offset).each do |pelada|
       PeladaMailer.pelada_notification(pelada)
