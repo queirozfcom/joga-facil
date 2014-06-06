@@ -9,7 +9,9 @@ namespace :emails do
     time_from = (Time.now + 2.hours).beginning_of_minute
     time_to = (Time.now + 2.hours + 10.minutes).beginning_of_minute + 59.seconds
 
-    zone_offset = Time.zone_offset(Time.now.zone)
+    # setting this manually because some servers are in different places
+    # -10800 equals UTC -3
+    zone_offset = -10800
 
     Pelada.where(data: time_from + zone_offset .. time_to + zone_offset).each do |pelada|
       PeladaMailer.pelada_notification(pelada)
