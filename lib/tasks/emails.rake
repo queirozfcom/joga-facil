@@ -11,11 +11,9 @@ namespace :emails do
 
     zone_offset = Time.zone_offset(Time.now.zone)
 
-    PeladaMailer.pelada_notification(Pelada.find(9))
-
-    # Pelada.where(data: time_from + zone_offset .. time_to + zone_offset).each do |pelada|
-    #   PeladaMailer.pelada_notification(pelada)
-    # end
+    Pelada.where(data: time_from + zone_offset .. time_to + zone_offset).each do |pelada|
+      PeladaMailer.pelada_notification(pelada)
+    end
 
   end
 
