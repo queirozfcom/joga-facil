@@ -12,8 +12,8 @@ class PeladasController < ApplicationController
      :order => 'peladas.data',
      :order => 'peladas.maximo_pessoas',
      :order => 'peladas.responsavel',
-     :order => 'peladas.custo',
-     :order_direction => 'asc')
+     :order => 'peladas.data',
+     :order_direction => 'desc')
   end
 
   # GET /peladas/1
@@ -24,7 +24,7 @@ class PeladasController < ApplicationController
 
   # GET /peladas/new
   def new
-    @pelada = Pelada.new
+    @pelada = Pelada.new( data: Time.zone.now )
   end
 
   # GET /peladas/1/edit
