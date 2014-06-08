@@ -5,11 +5,13 @@ one:
   local: MyString
   minimo_pessoas: 1
   custo: 1.5
-  responsavel: MyString
+  nome_responsavel: MyString
+  email_responsavel: MyString
 
 two:
   data: 2014-04-19 13:14:29
   local: MyString
   minimo_pessoas: 1
   custo: 1.5
-  responsavel: MyString
+  nome_responsavel: MyString
+  email_responsavel: MyString

@@ -26,6 +26,16 @@
               <strong>Local:</strong>
               <%= @pelada.local %>
             </p>
+            
+            <p>
+              <strong>Nome do responsável:</strong>
+              <%= @pelada.nome_responsavel %>
+            </p>
+
+            <p>
+              <strong>Email do responsável:</strong>
+              <%= @pelada.email_responsavel %>
+            </p>
 
             <p>
               <strong>Minimo pessoas:</strong>
@@ -39,11 +49,6 @@
             <p>
               <strong>Custo:</strong>
               <%= number_to_currency(@pelada.custo) %>
-            </p>
-
-            <p>
-              <strong>Responsavel:</strong>
-              <%= @pelada.responsavel %>
             </p>
 
           </div>

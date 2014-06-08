@@ -4,15 +4,14 @@ class PeladasController < ApplicationController
   # GET /peladas
   # GET /peladas.json
   def index
-    # @peladas = Pelada.all
-    @peladas_grid =initialize_grid(Pelada, 
+    @peladas_grid = initialize_grid(Pelada, 
      :include => [:usuario],  
      :order => 'peladas.local',
      :order => 'peladas.minimo_pessoas',
      :order => 'peladas.data',
      :order => 'peladas.maximo_pessoas',
-     :order => 'peladas.responsavel',
-     :order => 'peladas.data',
+     :order => 'peladas.email_responsavel',
+     :order => 'peladas.custo',
      :order_direction => 'desc')
   end
 
@@ -36,12 +35,16 @@ class PeladasController < ApplicationController
   def create
     @pelada = Pelada.new(pelada_params)
 
-  respond_to do |format|
+    respond_to do |format|
       if @pelada.save
 
         PeladaMailer.pelada_notification(@pelada).deliver
 
         format.html { redirect_to @pelada, notice: 'Pelada salva com sucesso.' }
+        
+        @usuario = Usuario.new(nome: pelada_params['nome_responsavel'], email: pelada_params['email_responsavel'])
+        create_user_and_join(pelada_params['email_responsavel'])
+
         format.json { render :show, status: :created, location: @pelada }
       else
         format.html { render :new }
@@ -59,19 +62,23 @@ class PeladasController < ApplicationController
       @usuario = Usuario.new(usuario_params)
 
       respond_to do |format|
-        usuario = Usuario.where(:email => usuario_params['email']).take
-
-        if usuario.nil?
-          usuario = @usuario
-          usuario.save!
-        end
-
-        cross_model = PeladasUsuarios.new(:usuario_id => usuario.id, :pelada_id => @pelada.id)
-        cross_model.save!
+        create_user_and_join(usuario_params['email'])
 
         format.html { redirect_to @pelada, :notice => 'Usuário adicionado a pelada com sucesso.' }
       end
     end
+  end
+
+  def create_user_and_join(email)
+    usuario = Usuario.where(:email => email).take
+
+    if usuario.nil?
+      usuario = @usuario
+      usuario.save!
+    end
+
+    cross_model = PeladasUsuarios.new(:usuario_id => usuario.id, :pelada_id => @pelada.id)
+    cross_model.save!
   end
 
   # PATCH/PUT /peladas/1
@@ -106,7 +113,7 @@ class PeladasController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def pelada_params
-    params.require(:pelada).permit(:data, :local, :minimo_pessoas, :custo, :responsavel,:maximo_pessoas)
+    params.require(:pelada).permit(:data, :local, :minimo_pessoas, :custo, :nome_responsavel, :email_responsavel, :maximo_pessoas)
   end
 
   def usuario_params

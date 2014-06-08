@@ -8,7 +8,7 @@ class PeladasControllerTest < ActionController::TestCase
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:peladas)
+    assert_not_nil assigns(:peladas_grid)
   end
 
   test "should get new" do
@@ -18,7 +18,15 @@ class PeladasControllerTest < ActionController::TestCase
 
   test "should create pelada" do
     assert_difference('Pelada.count') do
-      post :create, pelada: { custo: @pelada.custo, data: @pelada.data, local: @pelada.local, minimo_pessoas: @pelada.minimo_pessoas, responsavel: @pelada.responsavel }
+      post :create, pelada: { custo: @pelada.custo, data: @pelada.data, local: @pelada.local, minimo_pessoas: @pelada.minimo_pessoas, nome_responsavel: @pelada.nome_responsavel, email_responsavel: @pelada.email_responsavel }
+    end
+
+    assert_redirected_to pelada_path(assigns(:pelada))
+  end
+
+  test "should count responsavel as participant" do
+    assert_difference('Pelada.last.usuario.count', 1) do
+      post :create, pelada: { custo: @pelada.custo, data: @pelada.data, local: @pelada.local, minimo_pessoas: @pelada.minimo_pessoas, nome_responsavel: @pelada.nome_responsavel, email_responsavel: @pelada.email_responsavel }
     end
 
     assert_redirected_to pelada_path(assigns(:pelada))
@@ -35,7 +43,7 @@ class PeladasControllerTest < ActionController::TestCase
   end
 
   test "should update pelada" do
-    patch :update, id: @pelada, pelada: { custo: @pelada.custo, data: @pelada.data, local: @pelada.local, minimo_pessoas: @pelada.minimo_pessoas, responsavel: @pelada.responsavel }
+    patch :update, id: @pelada, pelada: { custo: @pelada.custo, data: @pelada.data, local: @pelada.local, minimo_pessoas: @pelada.minimo_pessoas, nome_responsavel: @pelada.nome_responsavel, email_responsavel: @pelada.email_responsavel }
     assert_redirected_to pelada_path(assigns(:pelada))
   end
 

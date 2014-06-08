@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140510122153) do
+ActiveRecord::Schema.define(version: 20140604150639) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,10 +21,11 @@ ActiveRecord::Schema.define(version: 20140510122153) do
     t.string   "local"
     t.integer  "minimo_pessoas"
     t.float    "custo"
-    t.string   "responsavel"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "maximo_pessoas"
+    t.string   "nome_responsavel"
+    t.string   "email_responsavel"
   end
 
   create_table "peladas_usuarios", force: true do |t|
