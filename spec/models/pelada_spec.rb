@@ -15,6 +15,5 @@ describe Pelada do
     expect(Pelada.where(local:'copacabana',minimo_pessoas: 10).take).not_to eq nil
 
 
-
   end
 end

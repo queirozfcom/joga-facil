@@ -5,6 +5,7 @@ install:
   - bundle install
 script:
   - RAILS_ENV=test rake db:migrate
+  - rake test
 before_script:
   - psql -c 'create database joga_facil_test;' -U postgres
 
